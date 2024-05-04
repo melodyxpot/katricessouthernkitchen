@@ -25,7 +25,7 @@ export default function RootLayout({
         className={`${inter.className} flex min-h-screen flex-col items-center justify-between w-full`}
       >
         <NavBar />
-        <Landing />
+        {/* <Landing /> */}
         {children}
         <Download />
         <Footer />

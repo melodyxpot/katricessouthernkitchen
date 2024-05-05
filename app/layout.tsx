@@ -4,7 +4,7 @@ import "./globals.css";
 import Download from "./_sections/download";
 import Footer from "./_sections/footer";
 import NavBar from "./_components/navs/navbar";
-import Landing from "./_sections/landing";
+import Slider from "./_sections/slider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,7 +25,7 @@ export default function RootLayout({
         className={`${inter.className} flex min-h-screen flex-col items-center justify-between w-full`}
       >
         <NavBar />
-        {/* <Landing /> */}
+        <Slider />
         {children}
         <Download />
         <Footer />

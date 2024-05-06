@@ -17,14 +17,20 @@ export const SliderComponent: React.FC<{
     <Image
       src={src}
       alt="landing carousel image"
-      className="h-[100vh] w-auto"
+      className="h-[100vh] w-auto object-cover"
     />
   </div>
 );
 
 export default function Slider() {
   return (
-    <Carousel showArrows={true} className="v-[100vh] select-none" autoPlay>
+    <Carousel
+      showArrows={true}
+      className="v-[100vh] select-none"
+      autoPlay
+      showThumbs={false}
+      showStatus={false}
+    >
       <SliderComponent
         title="Welcome To Katrices Southern Kitchen"
         src={SliderBanner}

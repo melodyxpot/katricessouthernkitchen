@@ -4,6 +4,7 @@ import Link from "next/link";
 import React, { ReactNode, useEffect, useState } from "react";
 
 import LogoImg from "@/assets/img/logo.png";
+import HamburgerMenu from "./hamburger-menu";
 
 const NavLink = ({
   children,
@@ -45,7 +46,7 @@ export default function NavBar() {
   return (
     <section
       className={`${
-        showBackground ? "bg-black" : "bg-transparent"
+        showBackground ? "bg-black" : "bg-black sm:bg-transparent"
       } w-full transition duration-100 py-4 px-3 lg:px-20 text-white fixed left-0 text-center m-auto top-0 z-50`}
     >
       <nav className="max-w-[1440px] w-full flex justify-between items-center m-auto">
@@ -74,8 +75,10 @@ export default function NavBar() {
             </Link>
           </li>
         </ul>
+        <div className="flex sm:hidden items-center">
+          <HamburgerMenu />
+        </div>
       </nav>
-      {/* <HamburgerMenuPage /> */}
     </section>
   );
 }

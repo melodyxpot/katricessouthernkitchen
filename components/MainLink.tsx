@@ -11,7 +11,7 @@ export default function MainLink({ children, href }: Props) {
   return (
     <Link
       href={href}
-      className="flex justify-center gap-2 items-center py-3 text-center px-4 bg-[#FC8019] rounded-full text-white w-full sm:w-40"
+      className="flex justify-center gap-2 items-center py-3 text-center px-4 bg-primary rounded-full text-white w-full sm:w-40"
     >
       {children}
       <ArrowRightIcon />

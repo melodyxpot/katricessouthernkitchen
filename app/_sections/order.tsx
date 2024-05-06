@@ -8,10 +8,10 @@ import Section from "../_components/section";
 
 export default function Order() {
   return (
-    <Section>
-      <div className="grid gap-10 grid-cols-1 lg:grid-cols-2 justify-center">
+    <Section className="flex-col">
+      <SubTitle className="text-left">Explore Your Favorite Food</SubTitle>
+      <div className="grid gap-5 sm:gap-10 grid-cols-1 lg:grid-cols-2 justify-center">
         <div className="flex flex-col gap-10 md:gap-5 xl:gap-10 xl:py-5">
-          <SubTitle className="text-left">Explore Your Favorite Food</SubTitle>
           <p>
             Lorem ipsum dolor sit amet consectetur. Ornare massa nunc nibh
             tristique. Non ligula tristique ut ut libero sit convallis maecenas.

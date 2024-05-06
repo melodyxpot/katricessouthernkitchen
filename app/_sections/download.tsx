@@ -5,12 +5,11 @@ import GooglePlayIcon from "@/components/Icons/GooglePlayIcon";
 import AppleIcon from "@/components/Icons/AppleIcon";
 
 import DownloadImage from "@/assets/img/download_banner.png";
-import Section from "../_components/section";
 
 export default function Download() {
   return (
-    <Section className="bg-[#FFF3E5]">
-      <div className="gap-5 flex flex-col sm:flex-row max-w-[1440px] w-full">
+    <div className="bg-[#FFF3E5] w-full flex justify-center py-16">
+      <div className="gap-5 grid grid-cols-1 sm:grid-cols-2 max-w-[1440px] w-full sm:px-20 px-3">
         <div className="flex flex-col gap-5">
           <h3 className="text-[#396C03] font-bold text-3xl">
             It’s Easier To Order By Mobile App
@@ -19,7 +18,7 @@ export default function Download() {
             Download our app from google play or app store and you don’t have to
             be worry about your food anymore.{" "}
           </p>
-          <div className="flex flex-col sm:flex-row gap-3">
+          <div className="flex flex-col lg:flex-row gap-3">
             <AppDownload link="#">
               <AppleIcon />
               <div>
@@ -36,10 +35,10 @@ export default function Download() {
             </AppDownload>
           </div>
         </div>
-        <div className="w-full sm:w-1/2">
+        <div className="w-full">
           <Image src={DownloadImage} alt="download banner" className="w-full" />
         </div>
       </div>
-    </Section>
+    </div>
   );
 }

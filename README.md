@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Kitchen Order Simple Ecommerce
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/) 
 
-First, run the development server:
+![GitHub Org's stars](https://img.shields.io/github/stars/melodyxpot%2FKitchenOrder)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This is simple ecommerce website that shows the workflow of the websites simply.
+Please give me star if you like it.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+![image](https://github.com/melodyxpot/KitchenOrder/assets/53822027/2f835702-2c5b-4254-8153-7a3a31d113f9)
 
-## Learn More
+## Clone and run locally
+1. You'll first need to clone the repository via the [GitHub Repo](https://github.com/melodyxpot/KitchenOrder)
 
-To learn more about Next.js, take a look at the following resources:
+2. Install dependencies
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```bash
+   # Using Npm
+   npm install
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+   # Using Yarn
+   yarn
+   ```
 
-## Deploy on Vercel
+3. Rename `.env.local.example` to `.env.local` and update the following:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   STRIPE_PUBLISHABLE_KEY=
+   STRIPE_SECRET_KEY=
+   STRIPE_PRICE_ID=
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![image](https://github.com/melodyxpot/KitchenOrder/assets/53822027/e8fd92fe-d83c-4b69-b338-24f3d43c98e7)
+![image](https://github.com/melodyxpot/KitchenOrder/assets/53822027/3e616d43-87aa-407a-afb2-0b1a1befc437)
+![image](https://github.com/melodyxpot/KitchenOrder/assets/53822027/cb7137e7-d171-4bbd-a58e-309d3aaeef0c)

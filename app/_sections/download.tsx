@@ -14,7 +14,7 @@ export default function Download() {
           <h3 className="text-[#396C03] font-bold text-3xl">
             It’s Easier To Order By Mobile App
           </h3>
-          <p>
+          <p className="text-gray-800">
             Download our app from google play or app store and you don’t have to
             be worry about your food anymore.{" "}
           </p>

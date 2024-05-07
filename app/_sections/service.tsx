@@ -17,7 +17,7 @@ export default function Service() {
       <div className="grid gap-10 grid-cols-1 lg:grid-cols-2 justify-center">
         <Image src={ServiceImg} alt="service image" className="w-full" />
         <div className="flex flex-col gap-10 md:gap-5 xl:gap-10 xl:py-5">
-          <p>
+          <p className="text-gray-800">
             We provides Lorem ipsum dolor sit amet consectetur. Ornare massa
             nunc nibh tristique. Non ligula tristique ut ut libero sit convallis
             maecenas. At egestas auctor porta mattis.

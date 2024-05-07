@@ -50,9 +50,12 @@ export default function NavBar() {
       } w-full transition duration-100 py-4 px-3 lg:px-20 text-white fixed left-0 text-center m-auto top-0 z-50`}
     >
       <nav className="max-w-[1440px] w-full flex justify-between items-center m-auto">
-        <Link href={"/"} className="flex gap-2 h-14 w-52 font-semibold">
+        <Link
+          href={"/"}
+          className="flex h-14 gap-2 w-52 font-semibold items-center"
+        >
           <Image src={LogoImg} alt="Logo" />
-          <p className="mt-1">Katrices Southern Kitchen</p>
+          <p className="mt-1 text-sm text-start">Katrices Southern Kitchen</p>
         </Link>
         <ul className="gap-3 md:gap-10 text-sm hidden sm:flex">
           <li>

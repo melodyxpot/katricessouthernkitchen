@@ -15,7 +15,7 @@ export default function Page() {
           {categories.map((i) => (
             <button
               key={i.id}
-              className={`border border-primary px-3 py-1 rounded-lg ${
+              className={`border border-primary px-3 py-1 hover:bg-primary hover:text-white transition rounded-lg ${
                 defaultCategory === i.id
                   ? "bg-primary text-white"
                   : "bg-transparent text-primary"

@@ -12,7 +12,7 @@ export default function Order() {
       <SubTitle className="text-left">Explore Your Favorite Food</SubTitle>
       <div className="grid gap-5 sm:gap-10 grid-cols-1 lg:grid-cols-2 justify-center">
         <div className="flex flex-col gap-10 md:gap-5 xl:gap-10 xl:py-5">
-          <p>
+          <p className="text-gray-800">
             Lorem ipsum dolor sit amet consectetur. Ornare massa nunc nibh
             tristique. Non ligula tristique ut ut libero sit convallis maecenas.
             At egestas auctor porta mattis.

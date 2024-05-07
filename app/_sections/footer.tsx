@@ -22,7 +22,7 @@ export default function Footer() {
               Katrices Southern Kitchen
             </h3>
           </div>
-          <p>
+          <p className="text-center sm:text-left text-gray-700">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor{" "}
           </p>
@@ -40,7 +40,7 @@ export default function Footer() {
         </div>
         <div className="flex flex-col gap-8">
           <h3 className="font-bold text-center sm:text-left">CONTACT US</h3>
-          <ul className="flex flex-col gap-3 text-sm">
+          <ul className="flex flex-col gap-3 text-sm text-gray-700">
             <li>
               <Link
                 href={"#"}
@@ -77,7 +77,7 @@ export default function Footer() {
         </div>
         <div className="flex flex-col gap-8 col-span-1 sm:col-span-2 lg:col-span-1">
           <h3 className="font-bold text-center sm:text-left">SITEMAP</h3>
-          <ul className="flex flex-row sm:flex-col gap-3 text-sm justify-center">
+          <ul className="flex flex-row sm:flex-col gap-3 text-sm justify-center text-gray-700">
             <li>
               <Link href={"#"} className="hover:underline">
                 Home
@@ -101,7 +101,9 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-      <p className="text-center">Copyright © 2024 Katrices Southern Kitchen.</p>
+      <p className="text-center text-sm text-gray-500">
+        Copyright © 2024 Katrices Southern Kitchen.
+      </p>
     </footer>
   );
 }

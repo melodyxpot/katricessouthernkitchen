@@ -30,6 +30,8 @@ export default function Slider() {
       autoPlay
       showThumbs={false}
       showStatus={false}
+      preventMovementUntilSwipeScrollTolerance={true}
+      swipeScrollTolerance={50}
     >
       <SliderComponent
         title="Welcome To Katrices Southern Kitchen"

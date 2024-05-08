@@ -12,7 +12,7 @@ const config: Config = {
       colors: {
         primary: {
           DEFAULT: "#FC8019",
-          100: "#fca65d"
+          100: "#cf660e"
         }
       },
       backgroundImage: {

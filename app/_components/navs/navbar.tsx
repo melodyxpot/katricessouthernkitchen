@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 
 import LogoImg from "@/assets/img/logo.png";
 import HamburgerMenu from "./hamburger-menu";
+import { usePathname } from "next/navigation";
 
 const NavLink = ({
   children,
@@ -27,6 +28,7 @@ const NavLink = ({
 export default function NavBar() {
   const TOP_OFFSET = 50;
   const [showBackground, setShowBackground] = useState<boolean>(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -60,12 +62,14 @@ export default function NavBar() {
         </Link>
         <ul className="gap-3 md:gap-10 text-sm hidden sm:flex">
           <li>
-            <NavLink href={"#"} active>
+            <NavLink href={"/"} active={pathname === "/"}>
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink href={"/order"}>Orders</NavLink>
+            <NavLink href={"/order"} active={pathname === "/order"}>
+              Order
+            </NavLink>
           </li>
           <li>
             <NavLink href={"#"}>About Us</NavLink>
@@ -76,7 +80,7 @@ export default function NavBar() {
           <li>
             <Link
               href={"#"}
-              className="bg-primary py-3 px-3 rounded-lg"
+              className="bg-primary py-3 px-3 rounded-lg hover:bg-primary-100 transition"
               onClick={() => toast("Coming soon!")}
             >
               Download App

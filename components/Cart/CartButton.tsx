@@ -33,6 +33,13 @@ export default function CartButton() {
         className="fixed bottom-10 right-10 bg-primary rounded-full p-4 text-white"
         onClick={() => setCartOpen(true)}
       >
+        {cart.length !== 0 && (
+          <div className="relative">
+            <p className="absolute -top-5 -right-5 bg-red-600 rounded-full w-6 h-6 text-xs p-1">
+              {cart.length}
+            </p>
+          </div>
+        )}
         <ShoppingCartOutlinedIcon />
       </button>
       <Drawer

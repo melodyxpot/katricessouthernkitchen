@@ -84,8 +84,8 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href={"#"} className="hover:underline">
-                Orders
+              <Link href={"/order"} className="hover:underline">
+                Order
               </Link>
             </li>
             <li>

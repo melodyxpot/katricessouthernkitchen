@@ -4,6 +4,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ClearIcon from "@mui/icons-material/Clear";
 import Link from "next/link";
 import toast from "react-hot-toast";
+import { usePathname } from "next/navigation";
 
 const NavLink = ({
   children,
@@ -23,6 +24,7 @@ const NavLink = ({
 );
 export default function HamburgerMenu() {
   const [navToggle, setNavToggle] = useState<boolean>(false);
+  const pathname = usePathname();
 
   return (
     <div className="text-white">
@@ -42,12 +44,14 @@ export default function HamburgerMenu() {
         } text-sm  transition absolute justify-center py-5 gap-10 left-0 top-full bg-black w-full px-4 transition-height ease duration-300`}
       >
         <li>
-          <NavLink href={"#"} active>
+          <NavLink href={"/"} active={pathname === "/"}>
             Home
           </NavLink>
         </li>
         <li>
-          <NavLink href={"/order"}>Orders</NavLink>
+          <NavLink href={"/order"} active={pathname === "/order"}>
+            Order
+          </NavLink>
         </li>
         <li>
           <NavLink href={"#"}>About Us</NavLink>
@@ -58,7 +62,7 @@ export default function HamburgerMenu() {
         <li>
           <Link
             href={"#"}
-            className="bg-primary py-3 px-3 rounded-lg"
+            className="bg-primary py-3 px-3 rounded-lg hover:bg-primary-100 transition"
             onClick={() => toast("Coming soon!")}
           >
             Download App

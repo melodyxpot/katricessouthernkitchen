@@ -15,24 +15,17 @@ type CheckoutResponse = {
 };
 
 export async function checkoutWithStripe(
-  // price: any,
-  redirectPath: string = "/account"
+  products: Array<CartProduct>,
+  redirectPath: string = "/"
 ): Promise<CheckoutResponse> {
   try {
     let params: Stripe.Checkout.SessionCreateParams = {
       allow_promotion_codes: true,
       billing_address_collection: "required",
-      // customer,
-      // customer_update: {
-      //   address: "auto"
-      // },
-      line_items: [
-        {
-          // price: price.id,
-          price: process.env.STRIPE_PRICE_ID,
-          quantity: 1
-        }
-      ],
+      line_items: products.map((product) => ({
+        price: product.priceId,
+        quantity: product.quantity
+      })),
       cancel_url: getURL(),
       success_url: getURL(redirectPath)
     };
@@ -41,25 +34,6 @@ export async function checkoutWithStripe(
       ...params,
       mode: "payment"
     };
-
-    // console.log(
-    //   "Trial end:",
-    //   calculateTrialEndUnixTimestamp(price.trial_period_days)
-    // );
-    // if (price.type === "recurring") {
-    //   params = {
-    //     ...params,
-    //     mode: "subscription",
-    //     subscription_data: {
-    //       trial_end: calculateTrialEndUnixTimestamp(price.trial_period_days)
-    //     }
-    //   };
-    // } else if (price.type === "one_time") {
-    //   params = {
-    //     ...params,
-    //     mode: "payment"
-    //   };
-    // }
 
     // Create a checkout session in Stripe
     let session;

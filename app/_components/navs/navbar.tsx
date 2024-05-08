@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { ReactNode, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 import LogoImg from "@/assets/img/logo.png";
 import HamburgerMenu from "./hamburger-menu";
@@ -47,7 +48,7 @@ export default function NavBar() {
     <section
       className={`${
         showBackground ? "bg-black" : "bg-black sm:bg-transparent"
-      } w-full transition duration-100 py-4 px-3 lg:px-20 text-white fixed left-0 text-center m-auto top-0 z-50`}
+      } w-full transition duration-100 py-4 px-3 lg:px-20 text-white fixed left-0 text-center m-auto top-0 z-10`}
     >
       <nav className="max-w-[1440px] w-full flex justify-between items-center m-auto">
         <Link
@@ -73,7 +74,11 @@ export default function NavBar() {
             <NavLink href={"#"}>Contact Us</NavLink>
           </li>
           <li>
-            <Link href={"#"} className="bg-primary py-3 px-3 rounded-lg">
+            <Link
+              href={"#"}
+              className="bg-primary py-3 px-3 rounded-lg"
+              onClick={() => toast("Coming soon!")}
+            >
               Download App
             </Link>
           </li>

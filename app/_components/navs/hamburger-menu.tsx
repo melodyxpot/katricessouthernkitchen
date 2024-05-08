@@ -3,6 +3,7 @@ import React, { ReactNode, useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import ClearIcon from "@mui/icons-material/Clear";
 import Link from "next/link";
+import toast from "react-hot-toast";
 
 const NavLink = ({
   children,
@@ -55,7 +56,11 @@ export default function HamburgerMenu() {
           <NavLink href={"#"}>Contact Us</NavLink>
         </li>
         <li>
-          <Link href={"#"} className="bg-primary py-3 px-3 rounded-lg">
+          <Link
+            href={"#"}
+            className="bg-primary py-3 px-3 rounded-lg"
+            onClick={() => toast("Coming soon!")}
+          >
             Download App
           </Link>
         </li>

@@ -29,12 +29,7 @@ export default function Page() {
       </div>
       <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3">
         {products.map((product, i) => (
-          <ProductCard
-            key={i}
-            name={product.name}
-            price={product.price}
-            desc={product.desc}
-          />
+          <ProductCard key={i} product={product} />
         ))}
       </div>
     </Section>

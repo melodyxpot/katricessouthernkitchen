@@ -1,19 +1,20 @@
-interface Product {
+declare interface Product {
   name: string;
   desc?: string;
   price: number;
   priceId: string;
+  category: string;
 }
 
-interface CartProduct {
+declare interface CartProduct {
   name: string;
   quantity: number;
   price: number;
   priceId: string;
 }
 
-interface Category {
-  id: string;
+declare interface Category {
+  id: number;
   name: string;
   active?: boolean;
 }

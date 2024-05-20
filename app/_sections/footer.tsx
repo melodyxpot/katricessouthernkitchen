@@ -14,8 +14,8 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="pt-32 max-w-[1440px] w-full px-3 sm:px-20 pb-5">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 sm:gap-5 md:gap-10 mb-11">
-        <div className="flex flex-col gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 sm:gap-5 md:gap-10 mb-11">
+        <div className="flex flex-col gap-5 lg:col-span-2">
           <div className="flex gap-3 justify-center sm:justify-start items-center">
             <Image src={Logo} alt="logo" />
             <h3 className="font-bold text-center sm:text-left">
@@ -38,7 +38,7 @@ export default function Footer() {
             </Link>
           </div>
         </div>
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-8 lg:col-span-2">
           <h3 className="font-bold text-center sm:text-left">CONTACT US</h3>
           <ul className="flex flex-col gap-3 text-sm text-gray-700">
             <li>

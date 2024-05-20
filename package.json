@@ -13,12 +13,13 @@
     "@emotion/styled": "^11.11.5",
     "@mui/icons-material": "^5.15.16",
     "@mui/material": "^5.15.16",
+    "axios": "^1.7.0",
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",
     "react-hot-toast": "^2.4.1",
     "react-responsive-carousel": "^3.2.23",
-    "stripe": "^15.5.0"
+    "stripe": "^15.7.0"
   },
   "devDependencies": {
     "@types/node": "^20",

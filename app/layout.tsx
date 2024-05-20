@@ -31,7 +31,7 @@ export default function RootLayout({
         <NavBar />
         <Slider />
         {children}
-        <Download />
+        {/* <Download /> */}
         <Footer />
         <CartButton />
       </body>

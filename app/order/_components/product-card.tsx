@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import AddShoppingCartOutlined from "@mui/icons-material/AddShoppingCartOutlined";
-import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
 import useLocalStorage from "@/hooks/useLocalStorage";
 import toast from "react-hot-toast";
 
@@ -17,18 +16,14 @@ export default function ProductCard({ product }: { product: Product }) {
   };
 
   return (
-    <div className="shadow-md rounded-lg p-5">
+    <div className="shadow-md rounded-lg p-5 flex flex-col gap-1">
       <p className="text-primary font-semibold">${product.price}</p>
-      <h3 className="text-lg font-bold">{product.name}</h3>
+      <h3 className="text-lg font-bold text-center w-full">{product.name}</h3>
       <p className="text-xs text-gray-400">{product.desc}</p>
       <div className="border border-b-primary my-3" />
-      <div className="grid grid-cols-2 sm:grid-cols-1 lg:grid-cols-2 gap-3 text-xs">
-        <button className="rounded-lg py-2 px-2 text-primary bg-primary bg-opacity-20 items-center flex justify-center">
-          <BookmarkBorderOutlinedIcon fontSize="small" />
-          Save for later
-        </button>
+      <div className="flex text-xs">
         <button
-          className="rounded-lg py-2 px-2 bg-primary text-white items-center flex justify-center transition"
+          className="rounded-lg py-2 px-2 bg-primary text-white items-center flex justify-center transition w-full hover:bg-primary-100"
           onClick={handleAddToCart}
         >
           <AddShoppingCartOutlined fontSize="small" />

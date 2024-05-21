@@ -30,7 +30,11 @@ export default function Footer() {
             <Link href={"#"}>
               <FacebookIcon />
             </Link>
-            <Link href={"#"}>
+            <Link
+              href={
+                "https://www.instagram.com/reel/C3dl9k4uOYv/?igsh=MXB1NHc0MzB2ZmQ5Yg=="
+              }
+            >
               <InstagramIcon />
             </Link>
             <Link href={"#"}>
@@ -67,7 +71,9 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                href={"#"}
+                href={
+                  "https://www.instagram.com/reel/C3dl9k4uOYv/?igsh=MXB1NHc0MzB2ZmQ5Yg=="
+                }
                 className="flex gap-1 hover:underline justify-center sm:justify-start"
               >
                 <InstagramIcon /> <p>@katricessouthernkitchen</p>

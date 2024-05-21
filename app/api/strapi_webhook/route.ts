@@ -72,18 +72,18 @@ export const POST = async (request: Request) => {
         if (success) {
           console.log("product is deactivated", result);
         }
-      } else if (event === StrapiEvent.ENTRY_UPDATE) {
-        const { success, result } = await updateStripeProduct(
-          res.entry.priceId,
-          res.entry.name,
-          res.entry.price,
-          res.entry.description
-        );
-
-        if (success) {
-          console.log("product is deactivated", result);
-        }
       }
+      // else if (event === StrapiEvent.ENTRY_UPDATE) {
+      //   const { success, result } = await updateStripeProduct(
+      //     res.entry.priceId,
+      //     res.entry.name,
+      //     res.entry.price,
+      //     res.entry.description
+      //   );
+      //   if (success) {
+      //     console.log("product is deactivated", result);
+      //   }
+      // }
     }
     return new Response(res, { status: 200 });
   } catch (error) {

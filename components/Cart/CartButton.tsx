@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import Drawer from "@/components/Drawer";
 import useLocalStorage from "@/hooks/useLocalStorage";
@@ -8,11 +8,56 @@ import CartItem from "./CartItem";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import CartEmpty from "./CartEmpty";
 import { clsx } from "clsx";
+import { getProductsApi } from "@/server/strapi";
+import toast from "react-hot-toast";
 
 export default function CartButton() {
   const [cartOpen, setCartOpen] = useState<boolean>(false);
-  const [cart] = useLocalStorage<CartProduct[]>("cart", []);
+  const [cart, setCart] = useLocalStorage<CartProduct[]>("cart", []);
   const [totalCost, setTotalCost] = useState<number>(0);
+  /**
+   * Fetch products
+   */
+  const getProducts = useCallback(async () => {
+    try {
+      const res = await getProductsApi();
+      if (res.success) {
+        const { result } = res;
+        const cartItems = localStorage.getItem("cart");
+        if (cartItems) {
+          setCart(
+            JSON.parse(cartItems)
+              .filter((item: CartProduct) =>
+                result.find((i: Product) => i.id === item.id)
+              )
+              .map((item: CartProduct) => {
+                const productItem = result.find(
+                  (i: Product) => i.id === item.id
+                );
+
+                return {
+                  id: productItem.id,
+                  quantity: item?.quantity ?? 0,
+                  name: productItem.attributes.name,
+                  priceId: productItem.attributes.priceId,
+                  price: productItem.attributes.price
+                };
+              })
+          );
+        }
+      } else {
+        console.error(res.error);
+        toast.error("Server Error");
+      }
+    } catch (error) {
+      console.error("--- getProducts ---", error);
+      toast.error("Server Error");
+    }
+  }, []);
+
+  useEffect(() => {
+    getProducts();
+  }, [getProducts]);
 
   useEffect(() => {
     let total = 0;

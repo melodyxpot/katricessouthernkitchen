@@ -4,13 +4,15 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import useLocalStorage from "@/hooks/useLocalStorage";
 
-export default function CartItem({ product }: { product: CartProduct }) {
+interface CartItemProduct extends CartProduct {}
+
+export default function CartItem({ product }: { product: CartItemProduct }) {
   const [cart, setCart] = useLocalStorage<CartProduct[]>("cart", []);
 
   const handleQuantityIncrease = () => {
     setCart(
       cart.map((p) => {
-        if (p.priceId === product.priceId) {
+        if (p.id === product.id) {
           p.quantity += 1;
         }
         return p;
@@ -24,7 +26,7 @@ export default function CartItem({ product }: { product: CartProduct }) {
     }
     setCart(
       cart.map((p) => {
-        if (p.priceId === product.priceId) {
+        if (p.id === product.id) {
           p.quantity -= 1;
         }
         return p;
@@ -33,7 +35,7 @@ export default function CartItem({ product }: { product: CartProduct }) {
   };
 
   const handleRemoveProduct = () => {
-    setCart(cart.filter((p) => p.priceId !== product.priceId));
+    setCart(cart.filter((p) => p.id !== product.id));
   };
 
   return (

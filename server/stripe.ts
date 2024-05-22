@@ -1,6 +1,7 @@
 "use server";
 
 import { stripe } from "@/utils/stripe/config";
+import { updateProductApi } from "./strapi";
 
 /**
  * @param {string} name
@@ -8,29 +9,42 @@ import { stripe } from "@/utils/stripe/config";
  * @param {string} description
  * @returns {string, string} productId priceId
  */
-export const createStripeProduct = async (
-  name: string,
-  unit_amount: number,
-  description?: string
-) => {
+export const createProduct = async (entry: any) => {
   try {
     const product = await stripe.products.create({
-      name,
-      description: description ? description : undefined
-    });
-
-    const price = await stripe.prices.create({
-      currency: "usd",
-      unit_amount: unit_amount * 100,
-      product: product.id
+      name: entry.name,
+      active: false,
+      default_price_data: {
+        currency: "usd",
+        unit_amount: entry.price * 100
+      },
+      description: entry.description ? entry.description : undefined
     });
 
     return {
       productId: product.id,
-      priceId: price.id
+      priceId: product.default_price
     };
   } catch (error: any) {
-    throw new Error("createStripePrice Error", error);
+    console.log(error);
+    throw new Error("createProduct Error", error);
+  }
+};
+
+export const setProductActiveStatus = async (
+  productId: string,
+  active: boolean
+) => {
+  try {
+    const product = await stripe.products.update(productId, { active });
+
+    return {
+      newProductId: product.id,
+      newPriceId: product.default_price
+    };
+  } catch (error: any) {
+    console.log(error);
+    throw new Error("setProductActiveStatus Error", error);
   }
 };
 
@@ -39,43 +53,53 @@ export const createStripeProduct = async (
  * @param {any} update
  * @returns
  */
-export const setStripeProductAndPriceStatus = async (
-  priceId: string,
-  update: any
-) => {
+export const deleteProduct = async (priceId: string, productId: string) => {
   try {
-    const price = await stripe.prices.update(priceId, update);
-    const result = await stripe.products.update(
-      price.product.toString(),
-      update
-    );
-    return { success: true, result };
+    const price = await stripe.prices.update(priceId, { active: false });
+    await stripe.products.update(productId, { active: false });
+    await stripe.products.del(productId);
+    return { success: true, result: "deleted the product" };
   } catch (error: any) {
     throw new Error("deleteStripeProduct Error", error);
   }
 };
 
-export const updateStripeProduct = async (
-  priceId: string,
-  name: string,
-  unit_amount: number,
-  description?: string
-) => {
+export const updateStripeProduct = async (entry: any) => {
   try {
-    let price = await stripe.prices.update(priceId, { active: false });
+    const product = await stripe.products.retrieve(entry.productId);
 
-    price = await stripe.prices.create({
-      currency: "usd",
-      unit_amount: unit_amount * 100,
-      product: price.product.toString()
-    });
+    if (entry.productId === null || entry.priceId === null) {
+      return { success: true, result: "This is create event" };
+    }
 
-    const result = await stripe.products.update(price.product.toString(), {
-      name,
-      description: description ? description : undefined
-    });
-    return { success: true, result };
+    const price = await stripe.prices.retrieve(entry.priceId);
+
+    if (product.name !== entry.name) {
+      await stripe.products.update(entry.productId, { name: entry.name });
+    }
+
+    if (product.description !== entry.description ?? undefined) {
+      await stripe.products.update(entry.productId, {
+        description: entry.description ? entry.description : undefined
+      });
+    }
+
+    if (price.unit_amount && price.unit_amount / 100 !== entry.price) {
+      const newPrice = await stripe.prices.create({
+        product: product.id,
+        currency: "usd",
+        unit_amount: entry.price * 100
+      });
+      await stripe.products.update(entry.productId, {
+        default_price: newPrice.id
+      });
+
+      await updateProductApi(entry.id, { priceId: newPrice.id });
+    }
+
+    return { success: true, result: "updated the product" };
   } catch (error: any) {
-    throw new Error("deleteStripeProduct Error", error);
+    console.log(error);
+    throw new Error("updateStripeProduct Error", error);
   }
 };

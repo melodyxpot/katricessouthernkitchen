@@ -50,12 +50,13 @@ export default function Page() {
       const res = await getProductsApi(category.id, search);
       if (res.success) {
         setProducts([
-          ...res.result.map((i: any) => ({
-            priceId: i.attributes.priceId,
-            name: i.attributes.name,
-            desc: i.attributes.description,
-            price: i.attributes.price,
-            category: i.attributes.category.data.attributes.categoryId
+          ...res.result.map((item: any) => ({
+            id: item.id,
+            priceId: item.attributes.priceId,
+            name: item.attributes.name,
+            desc: item.attributes.description,
+            price: item.attributes.price,
+            category: item.attributes.category.data.attributes.categoryId
           }))
         ]);
       } else {

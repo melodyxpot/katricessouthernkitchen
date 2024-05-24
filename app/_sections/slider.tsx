@@ -25,7 +25,7 @@ export const SliderComponent: React.FC<{
       // src={src}
       src={src as string}
       alt={title}
-      className="h-[100vh] w-auto object-cover"
+      className="h-[100vh] w-full object-cover"
     />
   </div>
 );

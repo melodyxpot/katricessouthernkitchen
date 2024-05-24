@@ -19,10 +19,11 @@ export const SliderComponent: React.FC<{
     <div className="bg-black bg-opacity-80 flex justify-center items-center absolute w-full h-full top-0 left-0">
       <h1 className="text-white text-5xl">{title}</h1>
     </div>
-    <Image
-      width={1000}
-      height={1000}
-      src={src}
+    <img
+      // width={1000}
+      // height={1000}
+      // src={src}
+      src={src as string}
       alt={title}
       className="h-[100vh] w-auto object-cover"
     />

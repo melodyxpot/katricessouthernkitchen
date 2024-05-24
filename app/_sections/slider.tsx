@@ -23,7 +23,7 @@ export const SliderComponent: React.FC<{
       width={1000}
       height={1000}
       src={src}
-      alt="landing carousel image"
+      alt={title}
       className="h-[100vh] w-auto object-cover"
     />
   </div>
@@ -34,6 +34,7 @@ export default function Slider() {
   useEffect(() => {
     getSlideImages();
   }, []);
+  console.log(sliders)
 
   const getSlideImages = async () => {
     try {

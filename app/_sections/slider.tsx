@@ -1,20 +1,24 @@
 "use client";
 import Image, { StaticImageData } from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 import SliderBanner from "@/assets/img/slider.png";
+import toast from "react-hot-toast";
+import { getSliderImagesApi } from "@/server/strapi";
 
 export const SliderComponent: React.FC<{
   title: string;
-  src: StaticImageData;
+  src: StaticImageData | string;
 }> = ({ title, src }) => (
   <div className="relative h-[100vh]">
     <div className="bg-black bg-opacity-80 flex justify-center items-center absolute w-full h-full top-0 left-0">
       <h1 className="text-white text-5xl">{title}</h1>
     </div>
     <Image
+      width={1000}
+      height={1000}
       src={src}
       alt="landing carousel image"
       className="h-[100vh] w-auto object-cover"
@@ -23,6 +27,21 @@ export const SliderComponent: React.FC<{
 );
 
 export default function Slider() {
+  const [sliders, setSliders] = useState<{image: string; title: string}[]>([]);
+  useEffect(() => {
+    getSlideImages();
+  }, []);
+
+  const getSlideImages = async () => {
+    try {
+      const { success, result }= await getSliderImagesApi();
+      console.log(result)
+      setSliders(result.map((item: any) => ({ title: item.attributes.title, image: `${process.env.NEXT_PUBLIC_STRAPI_API}${item.attributes.image.data[0].attributes.url}`})))
+    } catch (error) {
+      toast.error('Server Error')
+    }
+  }
+
   return (
     <Carousel
       showArrows={true}
@@ -33,12 +52,17 @@ export default function Slider() {
       preventMovementUntilSwipeScrollTolerance={true}
       swipeScrollTolerance={50}
     >
-      <SliderComponent
+      {sliders.map((slider, i) => <SliderComponent
+        key={`slider-${i}`}
+        title={slider.title}
+        src={slider.image}
+      />)}
+      {/* <SliderComponent
         title="Welcome To Katrices Southern Kitchen"
         src={SliderBanner}
       />
       <SliderComponent title="Order Your Favorite Food" src={SliderBanner} />
-      <SliderComponent title="About Us" src={SliderBanner} />
+      <SliderComponent title="About Us" src={SliderBanner} /> */}
     </Carousel>
   );
 }

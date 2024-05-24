@@ -54,7 +54,7 @@ export default function Page() {
             id: item.id,
             priceId: item.attributes.priceId,
             name: item.attributes.name,
-            desc: item.attributes.description,
+            description: item.attributes.description,
             price: item.attributes.price,
             category: item.attributes.category.data.attributes.categoryId
           }))

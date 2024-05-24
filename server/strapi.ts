@@ -1,7 +1,7 @@
 "use server";
 import axios from "axios";
 const strapiFetch = axios.create({
-  baseURL: `${process.env.STRAPI_API ?? "http://localhost:1337/api/"}`,
+  baseURL: `${process.env.NEXT_PUBLIC_STRAPI_API + '/api' ?? "http://localhost:1337/api/"}`,
   headers: {
     "Content-Type": "application/json",
     Authorization: `bearer ${process.env.STRAPI_API_TOKEN}`
@@ -31,6 +31,17 @@ export const getProductsApi = async (categoryId = 0, searchQuery = "") => {
     return { success: false, error: error.response.data };
   }
 };
+
+export const getSliderImagesApi = async () => {
+  try {
+    const response = await strapiFetch.get(
+      `/slider-images?populate=*`
+    );
+    return { success: true, result: response.data.data };
+  } catch (error: any) {
+    return { success: false, error: error.response.data };
+  }
+}
 
 /**
  * @param {string} productId

@@ -1,7 +1,7 @@
 "use server";
 import axios from "axios";
 const strapiFetch = axios.create({
-  baseURL: `${process.env.NEXT_PUBLIC_STRAPI_API + '/api' ?? "http://localhost:1337/api/"}`,
+  baseURL: `${process.env.STRAPI_API ?? "http://localhost:1337/api/"}`,
   headers: {
     "Content-Type": "application/json",
     Authorization: `bearer ${process.env.STRAPI_API_TOKEN}`

@@ -36,7 +36,7 @@ export default function Slider() {
     try {
       const { success, result }= await getSliderImagesApi();
       console.log(result)
-      setSliders(result.map((item: any) => ({ title: item.attributes.title, image: `${process.env.NEXT_PUBLIC_STRAPI_API}${item.attributes.image.data[0].attributes.url}`})))
+      setSliders(result.map((item: any) => ({ title: item.attributes.title, image: `${process.env.NEXT_PUBLIC_STRAPI_CDN}${item.attributes.image.data[0].attributes.url}`})))
     } catch (error) {
       toast.error('Server Error')
     }

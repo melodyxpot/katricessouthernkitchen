@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-import SliderBanner from "@/assets/img/slider.png";
 import toast from "react-hot-toast";
 import { getSliderImagesApi } from "@/server/strapi";
 
@@ -15,8 +14,8 @@ export const SliderComponent: React.FC<{
   title: string;
   src: StaticImageData | string;
 }> = ({ title, src }) => (
-  <div className="relative h-[100vh]">
-    <div className="bg-black bg-opacity-80 flex justify-center items-center absolute w-full h-full top-0 left-0">
+  <div className="relative h-[100vh] w-screen">
+    <div className="bg-black bg-opacity-80 flex justify-center items-center absolute w-screen h-full top-0 left-0">
       <h1 className="text-white text-5xl">{title}</h1>
     </div>
     <img
@@ -25,7 +24,7 @@ export const SliderComponent: React.FC<{
       // src={src}
       src={src as string}
       alt={title}
-      className="h-[100vh] w-full object-cover"
+      className="h-[100vh] w-screen object-cover"
     />
   </div>
 );
@@ -50,7 +49,7 @@ export default function Slider() {
   return (
     <Carousel
       showArrows={true}
-      className="v-[100vh] select-none"
+      className="v-[100vh] w-full select-none"
       autoPlay
       showThumbs={false}
       showStatus={false}

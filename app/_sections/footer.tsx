@@ -10,10 +10,11 @@ import CallIcon from "@mui/icons-material/Call";
 import MailIcon from "@mui/icons-material/Mail";
 import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
 import Link from "next/link";
+import { socials } from "@/constants";
 
 export default function Footer() {
   return (
-    <footer className="pt-32 max-w-[1440px] w-full px-3 sm:px-20 pb-5">
+    <footer className="pt-32 max-w-[1440px] w-full px-3 sm:px-20 pb-5 flex-1">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 sm:gap-5 md:gap-10 mb-11">
         <div className="flex flex-col gap-5 lg:col-span-2">
           <div className="flex gap-3 justify-center sm:justify-start items-center">
@@ -27,17 +28,15 @@ export default function Footer() {
             eiusmod tempor{" "}
           </p>
           <div className="flex gap-3 justify-center sm:justify-start">
-            <Link href={"#"}>
+            <Link href={socials.facebook.link}>
               <FacebookIcon />
             </Link>
             <Link
-              href={
-                "https://www.instagram.com/reel/C3dl9k4uOYv/?igsh=MXB1NHc0MzB2ZmQ5Yg=="
-              }
+              href={socials.instagram.link}
             >
               <InstagramIcon />
             </Link>
-            <Link href={"#"}>
+            <Link href={socials.x.link}>
               <XIcon />
             </Link>
           </div>
@@ -47,36 +46,34 @@ export default function Footer() {
           <ul className="flex flex-col gap-3 text-sm text-gray-700">
             <li>
               <Link
-                href={"#"}
+                href={socials.phone.link}
                 className="flex gap-1 hover:underline justify-center sm:justify-start"
               >
-                <CallIcon /> <p>773 355 8503</p>
+                <CallIcon /> <p>{socials.phone.text}</p>
               </Link>
             </li>
             <li>
               <Link
-                href={"#"}
+                href={socials.email.link}
                 className="flex gap-1 hover:underline justify-center sm:justify-start"
               >
-                <MailIcon /> <p>info@katrices.southern.kitchen@gmail.com</p>
+                <MailIcon /> <p>{socials.email.text}</p>
               </Link>
             </li>
             <li>
               <Link
-                href={"#"}
+                href={socials.facebook.link}
                 className="flex gap-1 hover:underline justify-center sm:justify-start"
               >
-                <FacebookRoundedIcon /> <p>Katrices Southern Kitchen</p>
+                <FacebookRoundedIcon /> <p>{socials.facebook.text}</p>
               </Link>
             </li>
             <li>
               <Link
-                href={
-                  "https://www.instagram.com/reel/C3dl9k4uOYv/?igsh=MXB1NHc0MzB2ZmQ5Yg=="
-                }
+                href={socials.instagram.link}
                 className="flex gap-1 hover:underline justify-center sm:justify-start"
               >
-                <InstagramIcon /> <p>@katricessouthernkitchen</p>
+                <InstagramIcon /> <p>{socials.instagram.text}</p>
               </Link>
             </li>
           </ul>
@@ -85,7 +82,7 @@ export default function Footer() {
           <h3 className="font-bold text-center sm:text-left">SITEMAP</h3>
           <ul className="flex flex-row sm:flex-col gap-3 text-sm justify-center text-gray-700">
             <li>
-              <Link href={"#"} className="hover:underline">
+              <Link href={"/"} className="hover:underline">
                 Home
               </Link>
             </li>
@@ -95,13 +92,8 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href={"#"} className="hover:underline">
+              <Link href={"/about"} className="hover:underline">
                 About Us
-              </Link>
-            </li>
-            <li>
-              <Link href={"#"} className="hover:underline">
-                Contact US
               </Link>
             </li>
           </ul>

@@ -5,6 +5,7 @@ import ProductCard from "./_components/product-card";
 import SearchInput from "@/components/SearchInput";
 import { getCategoriesApi, getProductsApi } from "@/server/strapi";
 import toast from "react-hot-toast";
+import Slider from "../_sections/slider";
 
 const defaultCategory: Category = {
   id: 0,
@@ -78,30 +79,33 @@ export default function Page() {
   }, [category, search, getProducts]);
 
   return (
-    <Section className="flex-col gap-3">
-      <div className="flex flex-col sm:flex-row gap-3 w-full justify-between">
-        <div className="flex gap-1">
-          {categories.map((i) => (
-            <button
-              key={i.id}
-              className={`border border-primary w-24 px-3 py-1 hover:bg-primary hover:text-white transition rounded-lg ${
-                category.id === i.id
-                  ? "bg-primary text-white"
-                  : "bg-transparent text-primary"
-              }`}
-              onClick={() => setCategory(i)}
-            >
-              {i.name}
-            </button>
+    <>
+      <Slider />
+      <Section className="flex-col gap-3">
+        <div className="flex flex-col sm:flex-row gap-3 w-full justify-between">
+          <div className="flex gap-1">
+            {categories.map((i) => (
+              <button
+                key={i.id}
+                className={`border border-primary w-24 px-3 py-1 hover:bg-primary hover:text-white transition rounded-lg ${
+                  category.id === i.id
+                    ? "bg-primary text-white"
+                    : "bg-transparent text-primary"
+                }`}
+                onClick={() => setCategory(i)}
+              >
+                {i.name}
+              </button>
+            ))}
+          </div>
+          <SearchInput setSearch={setSearch} />
+        </div>
+        <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3">
+          {products.map((product, i) => (
+            <ProductCard key={i} product={product} />
           ))}
         </div>
-        <SearchInput setSearch={setSearch} />
-      </div>
-      <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3">
-        {products.map((product, i) => (
-          <ProductCard key={i} product={product} />
-        ))}
-      </div>
-    </Section>
+      </Section>
+    </>
   );
 }

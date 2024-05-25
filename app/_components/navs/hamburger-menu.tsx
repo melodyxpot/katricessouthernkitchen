@@ -54,10 +54,7 @@ export default function HamburgerMenu() {
           </NavLink>
         </li>
         <li>
-          <NavLink href={"#"}>About Us</NavLink>
-        </li>
-        <li>
-          <NavLink href={"#"}>Contact Us</NavLink>
+          <NavLink href={"/about"}>About Us</NavLink>
         </li>
         <li>
           <Link

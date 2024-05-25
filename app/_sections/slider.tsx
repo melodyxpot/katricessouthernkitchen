@@ -34,7 +34,6 @@ export default function Slider() {
   useEffect(() => {
     getSlideImages();
   }, []);
-  console.log(sliders)
 
   const getSlideImages = async () => {
     try {

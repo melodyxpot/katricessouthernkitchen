@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 import LogoImg from "@/assets/img/logo.png";
 import HamburgerMenu from "./hamburger-menu";
 import { usePathname } from "next/navigation";
+import { useRouter } from "next/router";
 
 const NavLink = ({
   children,
@@ -31,11 +32,17 @@ export default function NavBar() {
   const pathname = usePathname();
 
   useEffect(() => {
+    if (pathname === '/about') {
+      setShowBackground(true)
+    }
+
     const handleScroll = () => {
-      if (window.scrollY >= TOP_OFFSET) {
-        setShowBackground(true);
-      } else {
-        setShowBackground(false);
+      if (pathname !== '/about') {
+        if (window.scrollY >= TOP_OFFSET) {
+          setShowBackground(true);
+        } else {
+          setShowBackground(false);
+        }
       }
     };
 
@@ -44,7 +51,7 @@ export default function NavBar() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [pathname]);
 
   return (
     <section
@@ -72,10 +79,7 @@ export default function NavBar() {
             </NavLink>
           </li>
           <li>
-            <NavLink href={"#"}>About Us</NavLink>
-          </li>
-          <li>
-            <NavLink href={"#"}>Contact Us</NavLink>
+            <NavLink href={"/about"}>About Us</NavLink>
           </li>
           <li>
             <Link

@@ -27,9 +27,7 @@ export default function RootLayout({
         className={`${inter.className} flex relative min-h-screen flex-col items-center justify-between w-full`}
       >
         <Toaster />
-
         <NavBar />
-        <Slider />
         {children}
         {/* <Download /> */}
         <Footer />

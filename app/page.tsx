@@ -7,8 +7,8 @@ export default function Home() {
   return (
     <>
       <Slider />
-      <Order />
-      <Explore />
+      {/* <Order /> */}
+      {/* <Explore /> */}
       <Service />
     </>
   );

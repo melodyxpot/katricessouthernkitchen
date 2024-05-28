@@ -33,6 +33,8 @@ export default function Service() {
       toast.error('Server Error')
     }
   }
+
+  console.log('--- service state ---', service)
   return (
     <Section className="flex-col">
       <SubTitle>Our Services</SubTitle>

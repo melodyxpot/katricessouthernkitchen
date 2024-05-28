@@ -22,11 +22,12 @@ export default function Service() {
   });
 
   useEffect(() => {
-    getService()
+    getService();
   }, [])
   const getService = async () => {
     try {
       const { success, result }= await getServiceApi();
+      console.log('--- service result ---', result);
       setService({ text: result[0].attributes.description ?? '', image: result[0].attributes.image.data.attributes.url.startsWith('http') ? result[0].attributes.image.data.attributes.url : STRAPI_CDN + result[0].attributes.image.data.attributes.url })
     } catch (error) {
       toast.error('Server Error')

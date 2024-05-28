@@ -18,7 +18,7 @@ export default function Footer() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 sm:gap-5 md:gap-10 mb-11">
         <div className="flex flex-col gap-5 lg:col-span-2">
           <div className="flex gap-3 justify-center sm:justify-start items-center">
-            <Image src={Logo} alt="logo" />
+            <Image src={Logo} width={50} height={50} alt="logo" />
             <h3 className="font-bold text-center sm:text-left">
               Katrices Southern Kitchen
             </h3>

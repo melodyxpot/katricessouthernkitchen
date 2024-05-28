@@ -38,7 +38,6 @@ export default function Slider() {
   const getSlideImages = async () => {
     try {
       const { success, result }= await getSliderImagesApi();
-      console.log(result)
       setSliders(result.map((item: any) => ({ title: item.attributes.title, image: `${item.attributes.image.data[0].attributes.url.startsWith('http') ? item.attributes.image.data[0].attributes.url : STRAPI_CDN + item.attributes.image.data[0].attributes.url}`})))
     } catch (error) {
       toast.error('Server Error')

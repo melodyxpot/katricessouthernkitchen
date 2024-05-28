@@ -64,7 +64,7 @@ export default function NavBar() {
           href={"/"}
           className="flex h-14 gap-2 w-52 font-semibold items-center"
         >
-          <Image src={LogoImg} alt="Logo" />
+          <Image src={LogoImg} width={50} height={50} alt="Logo" />
           <p className="mt-1 text-sm text-start">Katrices Southern Kitchen</p>
         </Link>
         <ul className="gap-3 md:gap-10 text-sm hidden sm:flex">

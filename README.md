@@ -4,6 +4,8 @@
 
 ![GitHub Org's stars](https://img.shields.io/github/stars/melodyxpot%2FKitchenOrder)
 
+![Dev URL](https://kitchen-order.vercel.app)
+
 
 This is simple ecommerce website that shows the workflow of the websites simply.
 Please give me star if you like it.

@@ -11,13 +11,13 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: "powerful-happiness-9b7bd959ea.media.strapiapp.com",
+        hostname: "admin.katricessouthernkitchen.com",
         port: '',
         pathname: '/**',
       },
       {
         protocol: 'https',
-        hostname: "powerful-happiness-9b7bd959ea.strapiapp.com",
+        hostname: "katricessouthernkitchen.com",
         port: '',
         pathname: '/**',
       }

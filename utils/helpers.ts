@@ -1,3 +1,8 @@
+"use server";
+
+import { createSecretKey } from "crypto";
+import { SignJWT, jwtVerify } from "jose";
+
 export const getURL = (path: string = "") => {
   // Check if NEXT_PUBLIC_SITE_URL is set and non-empty. Set this to your site URL in production env.
   let url =
@@ -129,3 +134,28 @@ export const getErrorRedirect = (
     disableButton,
     arbitraryParams
   );
+
+export const getTokenWithJwt = async (data: any) => {
+  const secretKey = createSecretKey(process.env.JWT_SECRET ?? "secret", "utf-8");
+
+  const token = await new SignJWT(data)
+  .setProtectedHeader({
+    alg: 'HS256'
+  })
+  .setIssuedAt()
+  .setExpirationTime(process.env.JWT_EXPIRATION_TIME ?? "15mins")
+  .sign(secretKey);
+
+  return token;
+}
+
+export const getJwtVerifiedPayload = async (token: string) => {
+  try {
+    console.log("==== token ====", token);
+    const { payload } = await jwtVerify(token, createSecretKey(process.env.JWT_SECRET ?? "secret", "utf-8"));
+    return { payload, success: true };
+  } catch (error) {
+    console.error(error)
+    return { success: false, payload: null };
+  }
+}

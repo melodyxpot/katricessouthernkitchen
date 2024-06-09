@@ -14,6 +14,7 @@ import toast from "react-hot-toast";
 export default function CartButton() {
   const [cartOpen, setCartOpen] = useState<boolean>(false);
   const [cart, setCart] = useLocalStorage<CartProduct[]>("cart", []);
+  const [purchaseId, setPurchaseId] = useLocalStorage<string>("purchaseId", "");
   const [totalCost, setTotalCost] = useState<number>(0);
   /**
    * Fetch products
@@ -66,8 +67,11 @@ export default function CartButton() {
   }, [cart]);
 
   const purchaseCartItems = async () => {
-    const result = await checkoutWithStripe(cart);
+    const resultString = await checkoutWithStripe(cart);
+    const result = JSON.parse(resultString);
+
     if (result.session && result.session.url) {
+      setPurchaseId(result.purchaseId);
       location.href = result.session.url;
     }
   };

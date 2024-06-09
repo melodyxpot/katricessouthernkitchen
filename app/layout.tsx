@@ -7,6 +7,7 @@ import NavBar from "./_components/navs/navbar";
 import Slider from "./_sections/slider";
 import CartButton from "../components/Cart/CartButton";
 import { Toaster } from "react-hot-toast";
+import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,12 +27,14 @@ export default function RootLayout({
       <body
         className={`${inter.className} flex relative min-h-screen flex-col items-center justify-between w-full`}
       >
-        <Toaster />
-        <NavBar />
-        {children}
-        {/* <Download /> */}
-        <Footer />
-        <CartButton />
+        <Suspense>
+          <Toaster />
+          <NavBar />
+          {children}
+          {/* <Download /> */}
+          <Footer />
+          <CartButton />
+        </Suspense>
       </body>
     </html>
   );

@@ -2,19 +2,17 @@
 
 import Stripe from "stripe";
 import { stripe } from "@/utils/stripe/config";
-import { getURL, getErrorRedirect } from "@/utils/helpers";
-
-type CheckoutResponse = {
-  errorRedirect?: string;
-  // sessionId?: string;
-  session?: Stripe.Response<Stripe.Checkout.Session>;
-};
+import { getURL, getErrorRedirect, getTokenWithJwt } from "@/utils/helpers";
+import { randomUUID } from "crypto";
 
 export async function checkoutWithStripe(
   products: Array<{ priceId: string; quantity: number }>,
   redirectPath: string = "/"
-): Promise<CheckoutResponse> {
+): Promise<string> {
   try {
+    const purchaseId = randomUUID();
+    const token = await getTokenWithJwt({ id: purchaseId });
+
     let params: Stripe.Checkout.SessionCreateParams = {
       allow_promotion_codes: true,
       billing_address_collection: "required",
@@ -22,8 +20,11 @@ export async function checkoutWithStripe(
         price: product.priceId,
         quantity: product.quantity
       })),
-      cancel_url: getURL(),
-      success_url: getURL(redirectPath)
+      phone_number_collection: {
+        enabled: true,
+      },
+      cancel_url: await getURL(`?checkout=${token}&status=cancel`),
+      success_url: await getURL(`?checkout=${token}&status=success`),
     };
 
     params = {
@@ -33,6 +34,7 @@ export async function checkoutWithStripe(
 
     // Create a checkout session in Stripe
     let session;
+
     try {
       session = await stripe.checkout.sessions.create(params);
     } catch (err) {
@@ -43,27 +45,27 @@ export async function checkoutWithStripe(
     // Instead of returning a Response, just return the data or error.
     if (session) {
       // return { sessionId: session.id };
-      return { session };
+      return JSON.stringify({ session, purchaseId });
     } else {
       throw new Error("Unable to create checkout session.");
     }
   } catch (error) {
     if (error instanceof Error) {
-      return {
+      return JSON.stringify({
         errorRedirect: getErrorRedirect(
           redirectPath,
           error.message,
           "Please try again later or contact a system administrator."
         )
-      };
+      });
     } else {
-      return {
+      return JSON.stringify({
         errorRedirect: getErrorRedirect(
           redirectPath,
           "An unknown error occurred.",
           "Please try again later or contact a system administrator."
         )
-      };
+      });
     }
   }
 }

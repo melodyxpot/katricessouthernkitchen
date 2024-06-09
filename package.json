@@ -14,11 +14,13 @@
     "@mui/icons-material": "^5.15.16",
     "@mui/material": "^5.15.16",
     "axios": "^1.7.0",
+    "jose": "^5.4.0",
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",
     "react-hot-toast": "^2.4.1",
     "react-responsive-carousel": "^3.2.23",
+    "sharp": "^0.33.4",
     "stripe": "^15.7.0"
   },
   "devDependencies": {

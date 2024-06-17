@@ -52,7 +52,7 @@ export default function Service() {
             </div>
             <div>
               <ServiceList icon={ServiceHoursImg} text="24/7 Service" />
-              <ServiceList icon={BookingImg} text="Oragonized Foodhut Place" />
+              <ServiceList icon={BookingImg} text="Organized Foodhut Place" />
               <ServiceList icon={BookingImg} text="Clean Kitchen" />
             </div>
           </div>

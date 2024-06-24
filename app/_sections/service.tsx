@@ -13,34 +13,48 @@ import Section from "../_components/section";
 import { getServiceApi } from "@/server/strapi";
 import toast from "react-hot-toast";
 
-const STRAPI_CDN = process.env.NEXT_PUBLIC_STRAPI_API ?? '';
+const STRAPI_CDN = process.env.NEXT_PUBLIC_STRAPI_API ?? "";
 
 export default function Service() {
-  const [service, setService] = useState<{image: string; text: string}>({
-    text: '',
-    image: ''
+  const [service, setService] = useState<{ image: string; text: string }>({
+    text: "",
+    image: "",
   });
 
   useEffect(() => {
     getService();
-  }, [])
+  }, []);
   const getService = async () => {
     try {
-      const { success, result }= await getServiceApi();
-      setService({ text: result[0].attributes.description ?? '', image: result[0].attributes.image.data.attributes.url.startsWith('http') ? result[0].attributes.image.data.attributes.url : STRAPI_CDN + result[0].attributes.image.data.attributes.url })
+      const { success, result } = await getServiceApi();
+      setService({
+        text: result[0].attributes.description ?? "",
+        image: result[0].attributes.image.data.attributes.url.startsWith("http")
+          ? result[0].attributes.image.data.attributes.url
+          : STRAPI_CDN + result[0].attributes.image.data.attributes.url,
+      });
     } catch (error) {
-      toast.error('Server Error');
+      // toast.error('Server Error');
+      console.log("Server Error");
     }
-  }
+  };
 
   return (
     <Section className="flex-col">
       <SubTitle>Our Services</SubTitle>
       <div className="grid gap-10 grid-cols-1 lg:grid-cols-2 justify-center">
-        <Image src={service.image ? service.image : ServiceImg} width={500} height={500} alt="service image" className="w-full rounded-md" />
+        <Image
+          src={service.image ? service.image : ServiceImg}
+          width={500}
+          height={500}
+          alt="service image"
+          className="w-full rounded-md"
+        />
         <div className="flex flex-col gap-10 md:gap-5 xl:gap-10 xl:py-5">
           <p className="text-gray-800">
-            {service.text ? service.text : `We provides Lorem ipsum dolor sit amet consectetur. Ornare massa
+            {service.text
+              ? service.text
+              : `We provides Lorem ipsum dolor sit amet consectetur. Ornare massa
             nunc nibh tristique. Non ligula tristique ut ut libero sit convallis
             maecenas. At egestas auctor porta mattis.`}
           </p>

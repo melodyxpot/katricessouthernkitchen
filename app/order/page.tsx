@@ -10,7 +10,7 @@ import Slider from "../_sections/slider";
 const defaultCategory: Category = {
   id: 0,
   name: "all",
-  active: true
+  active: true,
 };
 
 export default function Page() {
@@ -30,16 +30,16 @@ export default function Page() {
           ...res.result.map((i: any) => ({
             id: i.id,
             name: i.attributes.name,
-            active: true
-          }))
+            active: true,
+          })),
         ]);
       } else {
         console.error(res.error);
-        toast.error("Server Error");
+        // toast.error("Server Error");
       }
     } catch (error) {
       console.error("--- getCategories ---", error);
-      toast.error("Server Error");
+      // toast.error("Server Error");
     }
   };
 
@@ -57,16 +57,16 @@ export default function Page() {
             name: item.attributes.name,
             description: item.attributes.description,
             price: item.attributes.price,
-            category: item.attributes.category.data.attributes.categoryId
-          }))
+            category: item.attributes.category.data.attributes.categoryId,
+          })),
         ]);
       } else {
         console.error(res.error);
-        toast.error("Server Error");
+        // toast.error("Server Error");
       }
     } catch (error) {
       console.error("--- getProducts ---", error);
-      toast.error("Server Error");
+      // toast.error("Server Error");
     }
   }, [category.id, search]);
 

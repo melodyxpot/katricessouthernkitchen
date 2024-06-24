@@ -7,8 +7,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import toast from "react-hot-toast";
 import { getSliderImagesApi } from "@/server/strapi";
 
-const STRAPI_CDN = process.env.NEXT_PUBLIC_STRAPI_API ?? '';
-
+const STRAPI_CDN = process.env.NEXT_PUBLIC_STRAPI_API ?? "";
 
 export const SliderComponent: React.FC<{
   title: string;
@@ -30,19 +29,31 @@ export const SliderComponent: React.FC<{
 );
 
 export default function Slider() {
-  const [sliders, setSliders] = useState<{image: string; title: string}[]>([]);
+  const [sliders, setSliders] = useState<{ image: string; title: string }[]>(
+    []
+  );
   useEffect(() => {
     getSlideImages();
   }, []);
 
   const getSlideImages = async () => {
     try {
-      const { success, result }= await getSliderImagesApi();
-      setSliders(result.map((item: any) => ({ title: item.attributes.title, image: `${item.attributes.image.data[0].attributes.url.startsWith('http') ? item.attributes.image.data[0].attributes.url : STRAPI_CDN + item.attributes.image.data[0].attributes.url}`})))
+      const { success, result } = await getSliderImagesApi();
+      setSliders(
+        result.map((item: any) => ({
+          title: item.attributes.title,
+          image: `${
+            item.attributes.image.data[0].attributes.url.startsWith("http")
+              ? item.attributes.image.data[0].attributes.url
+              : STRAPI_CDN + item.attributes.image.data[0].attributes.url
+          }`,
+        }))
+      );
     } catch (error) {
-      toast.error('Admin Server Error')
+      // toast.error('Admin Server Error')
+      console.log("Admin Server Error");
     }
-  }
+  };
 
   return (
     <Carousel
@@ -54,11 +65,13 @@ export default function Slider() {
       preventMovementUntilSwipeScrollTolerance={true}
       swipeScrollTolerance={50}
     >
-      {sliders.map((slider, i) => <SliderComponent
-        key={`slider-${i}`}
-        title={slider.title}
-        src={slider.image}
-      />)}
+      {sliders.map((slider, i) => (
+        <SliderComponent
+          key={`slider-${i}`}
+          title={slider.title}
+          src={slider.image}
+        />
+      ))}
       {/* <SliderComponent
         title="Welcome To Katrices Southern Kitchen"
         src={SliderBanner}

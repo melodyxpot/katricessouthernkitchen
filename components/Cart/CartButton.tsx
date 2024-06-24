@@ -48,11 +48,11 @@ export default function CartButton() {
         }
       } else {
         console.error(res.error);
-        toast.error("Server Error");
+        // toast.error("Server Error");
       }
     } catch (error) {
       console.error("--- getProducts ---", error);
-      toast.error("Server Error");
+      // toast.error("Server Error");
     }
   }, []);
 

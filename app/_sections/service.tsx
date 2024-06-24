@@ -10,7 +10,7 @@ import BookingImg from "@/assets/img/service-icons/booking.png";
 import ServiceList from "../_components/service-list";
 import SubTitle from "../_components/subtitle";
 import Section from "../_components/section";
-import { getServiceApi } from "@/server/strapi";
+import { getPageSectionApi } from "@/server/strapi";
 import toast from "react-hot-toast";
 
 const STRAPI_CDN = process.env.NEXT_PUBLIC_STRAPI_API ?? "";
@@ -26,13 +26,21 @@ export default function Service() {
   }, []);
   const getService = async () => {
     try {
-      const { success, result } = await getServiceApi();
-      setService({
-        text: result[0].attributes.description ?? "",
-        image: result[0].attributes.image.data.attributes.url.startsWith("http")
-          ? result[0].attributes.image.data.attributes.url
-          : STRAPI_CDN + result[0].attributes.image.data.attributes.url,
-      });
+      const { success, result } = await getPageSectionApi();
+      const serviceResult = result.filter(
+        (i: any) => i.attributes.page === "service"
+      )[0];
+      if (serviceResult) {
+        const mediaUrl = serviceResult.attributes.image.data.attributes.url;
+        setService({
+          text: serviceResult.attributes.description ?? "",
+          image: serviceResult.attributes.image.data.attributes.url.startsWith(
+            "http"
+          )
+            ? serviceResult.attributes.image.data.attributes.url
+            : STRAPI_CDN + mediaUrl,
+        });
+      }
     } catch (error) {
       // toast.error('Server Error');
       console.log("Server Error");

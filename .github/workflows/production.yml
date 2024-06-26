@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    name: Deploy to Docker
+    name: Deploy project with Nginx
 
     permissions:
       deployments: write
@@ -42,10 +42,10 @@ jobs:
           port: 22
           script: |
             git config --global url."https://${{ secrets.PERSONAL_GITHUB_TOKEN }}:@github.com".insteadOf "https://github.com"
-            cd xipics/
+            cd kitchenorder/
             git pull origin main
-            docker compose down
-            docker compose up -d --build
+            yarn build
+            pm2 restart kitchenorder
 
       - name: Update deployment Status (success)
         if: success()

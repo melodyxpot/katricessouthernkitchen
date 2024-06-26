@@ -13,7 +13,7 @@ export const socials = {
   },
   instagram: {
     text: "@katricessouthernkitchen",
-    link: "@katricessouthernkitchen",
+    link: "https://www.instagram.com/reel/C3dl9k4uOYv/?igsh=MXB1NHc0MzB2ZmQ5Yg==",
   },
   x: {
     text: "@katricessouthernkitchen",

@@ -24,16 +24,13 @@ export default function Footer() {
             </h3>
           </div>
           <p className="text-center sm:text-left text-gray-700">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor{" "}
+            You bring the passion for food, we’ll handle everything else.{" "}
           </p>
           <div className="flex gap-3 justify-center sm:justify-start">
             <Link href={socials.facebook.link}>
               <FacebookIcon />
             </Link>
-            <Link
-              href={socials.instagram.link}
-            >
+            <Link href={socials.instagram.link}>
               <InstagramIcon />
             </Link>
             <Link href={socials.x.link}>

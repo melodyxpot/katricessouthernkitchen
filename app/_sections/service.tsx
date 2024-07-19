@@ -78,7 +78,7 @@ export default function Service() {
               <ServiceList icon={BookingImg} text="Clean Kitchen" />
             </div>
           </div>
-          <MainLink href="#">About Us</MainLink>
+          <MainLink href="/about">About Us</MainLink>
         </div>
       </div>
     </Section>

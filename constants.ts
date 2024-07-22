@@ -5,7 +5,7 @@ export const socials = {
   },
   email: {
     text: "katrice2020@gmail.com",
-    link: "katrice2020@gmail.com",
+    link: "mailto:katrice2020@gmail.com",
   },
   facebook: {
     text: "Katrices Southern Kitchen",

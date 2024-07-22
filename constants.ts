@@ -1,11 +1,11 @@
 export const socials = {
   phone: {
-    text: "7733558503",
-    link: "tel:+7733558503",
+    text: "+1 (773) 355-8504",
+    link: "tel:+1773355-8504",
   },
   email: {
-    text: "info@katrices.southern.kitchen@gmail.com",
-    link: "mailto:info@katrices.southern.kitchen@gmail.com",
+    text: "katrice2020@gmail.com",
+    link: "katrice2020@gmail.com",
   },
   facebook: {
     text: "Katrices Southern Kitchen",

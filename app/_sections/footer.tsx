@@ -24,7 +24,7 @@ export default function Footer() {
             </h3>
           </div>
           <p className="text-center sm:text-left text-gray-700">
-            You bring the passion for food, we’ll handle everything else.{" "}
+            Food for the Soul.{" "}
           </p>
           <div className="flex gap-3 justify-center sm:justify-start">
             <Link href={socials.facebook.link}>
